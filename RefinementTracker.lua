@@ -6,7 +6,7 @@
 
 RefinementTracker = {}
 RefinementTracker.name = "RefinementTracker"
-RefinementTracker.version = "0.9.0"
+RefinementTracker.version = "0.9.1"
 
 -- Defaults
 local defaultOptions = {
@@ -32,6 +32,8 @@ RefinementTracker.craftSkill = 0
 RefinementTracker.refining = nil
 RefinementTracker.results = {} -- Format: {[raw mat link] = {[booster link] = number}}
 
+RefinementTracker.isVisible = false
+
 ---------------------------------------------------------------------
 -- Initialize 
 function RefinementTracker:Initialize()
@@ -52,6 +54,8 @@ function RefinementTracker:Initialize()
     -- Don't know what false means...
     RefinementTracker.initializeWindow()
     SCENE_MANAGER:RegisterTopLevel(RefinementTrackerWindow, false)
+
+    ZO_CreateStringId("SI_BINDING_NAME_REFINED_TOGGLE", "Toggle Refinement Tracker Results")
 
     if (RefinementTracker.SavedOptions.Debug) then
         d("RefinementTracker initialized!")

@@ -1,7 +1,7 @@
 ## Title: RefinementTracker
 ## Displays boosters obtained from refining raw materials
 ## Author: Kyzeragon
-## Version: 0.9.0
+## Version: 0.9.1
 ## APIVersion: 100024
 
 ## OptionalDependsOn: LibAddonMenu-2.0
@@ -12,6 +12,7 @@ RefinementTracker.lua
 RefinementTrackerSettings.lua
 RefinementTrackerUI.lua
 RefinementTrackerUI.xml
+bindings.xml
 
 Libs\LibAddonMenu-2.0\LibAddonMenu-2.0.lua
 Libs\LibAddonMenu-2.0\controls\panel.lua

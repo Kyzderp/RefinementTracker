@@ -206,12 +206,22 @@ end
 
 function RefinementTracker.showWindow()
     SCENE_MANAGER:ShowTopLevel(RefinementTrackerWindow)
+    RefinementTracker.isVisible = true
     -- RefinementTrackerWindow:SetHidden(false)
 end
 
 function RefinementTracker.hideWindow()
     SCENE_MANAGER:HideTopLevel(RefinementTrackerWindow)
+    RefinementTracker.isVisible = false
     -- RefinementTrackerWindow:SetHidden(true)
+end
+
+function RefinementTracker.toggleWindow()
+    if (RefinementTracker.isVisible) then
+        RefinementTracker.hideWindow()
+    else
+        RefinementTracker.showWindow()
+    end
 end
 
 ---------------------------------------------------------------------
