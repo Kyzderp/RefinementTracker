@@ -3,42 +3,53 @@
 		<TopLevelControl name="RefinementTrackerWindow" clampedToScreen="true" mouseEnabled="true" movable="true" hidden="true" >
 			<Dimensions x="780" y="500" />
 			<Anchor point="CENTER" relativeTo="GuiRoot" relativePoint="CENTER" offsetX="-300" offsetY="-100"/>
-		    <Controls>
-		    	<Backdrop name="$(parent)Backdrop" alpha="1" inherits="ZO_DefaultBackdrop" centerColor="666666">
-		    		<AnchorFill/>
+			<Controls>
+				<Backdrop name="$(parent)Backdrop" alpha="1" inherits="ZO_DefaultBackdrop" centerColor="666666">
+					<AnchorFill/>
 				</Backdrop>
+				<Button name="$(parent)Reset" alpha="1" clickSound="Default_Click" topmost="true">
+					<Textures normal="/esoui/art/help/help_tabicon_feedback_up.dds"
+					  mouseOver="/esoui/art/help/help_tabicon_feedback_over.dds"
+					  pressed="/esoui/art/help/help_tabicon_feedback_down.dds" />
+					<Anchor point="CENTER" relativeTo="$(parent)" relativePoint="TOPRIGHT" offsetX="-44" offsetY="16" />
+					<Dimensions x="32" y="32" />
+					<OnClicked>
+						RefinementTracker.askReset()
+					</OnClicked>
+				</Button>
+
 				<Button name="$(parent)Close" alpha="1" clickSound="Default_Click" topmost="true">
-		    		<Textures normal="/esoui/art/hud/radialicon_cancel_up.dds" mouseOver="/esoui/art/hud/radialicon_cancel_over.dds" />
-     				<Anchor point="CENTER" relativeTo="$(parent)" relativePoint="TOPRIGHT" offsetX="-20" offsetY="16" />
-      				<Dimensions x="48" y="48" />
+					<Textures normal="/esoui/art/hud/radialicon_cancel_up.dds" mouseOver="/esoui/art/hud/radialicon_cancel_over.dds" />
+					<Anchor point="CENTER" relativeTo="$(parent)" relativePoint="TOPRIGHT" offsetX="-20" offsetY="16" />
+					<Dimensions x="48" y="48" />
 					<OnClicked>
 						RefinementTracker.hideWindow()
 					</OnClicked>
-		    	</Button>
+				</Button>
 
-		    	<Label name="$(parent)Warning" font="ZoFontGameSmall" horizontalAlignment="LEFT" text="Extracted boosters will not be added to this panel because your" hidden="true">
-		    		<Dimensions x="450" y="20" />
-		    		<Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT" offsetX="280" offsetY="450" />
-		    		<Controls>
-		    			<Label name="$(parent)Second" font="ZoFontGameSmall" horizontalAlignment="LEFT" text="extraction level is not max. You can change this in your Settings.">
-				    		<Dimensions x="450" y="20" />
-				    		<Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="BOTTOMLEFT" />
-				    	</Label>
-		    		</Controls>
-		    	</Label>
-		    	
+				<Label name="$(parent)Warning" font="ZoFontGameSmall" horizontalAlignment="LEFT" text="Extracted boosters will not be added to this panel because your" hidden="true">
+					<Dimensions x="450" y="20" />
+					<Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT" offsetX="280" offsetY="450" />
+					<Controls>
+						<Label name="$(parent)Second" font="ZoFontGameSmall" horizontalAlignment="LEFT" text="extraction level is not max. You can change this in your Settings.">
+							<Dimensions x="450" y="20" />
+							<Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="BOTTOMLEFT" />
+						</Label>
+					</Controls>
+				</Label>
 
-		    	<Label name="$(parent)H1" text="Refinement Results" font="ZoFontHeader2" verticalAlignment="TOPLEFT">
-		    		<Dimensions x="740" y="20" />
-		    		<Anchor point="TOPLEFT" relativeTo="$(parent)" offsetX="20" offsetY="5" />
-		    	</Label>
-		    	<Texture textureFile="EsoUI/Art/Miscellaneous/horizontalDivider.dds">
+
+				<Label name="$(parent)H1" text="Refinement Results" font="ZoFontHeader2" verticalAlignment="TOPLEFT">
+					<Dimensions x="740" y="20" />
+					<Anchor point="TOPLEFT" relativeTo="$(parent)" offsetX="20" offsetY="5" />
+				</Label>
+				<Texture textureFile="EsoUI/Art/Miscellaneous/horizontalDivider.dds">
 					<Anchor point="TOPLEFT" relativeTo="$(parent)H1" relativePoint="BOTTOMLEFT" offsetX="-10" offsetY="5"/>
 					<Anchor point="TOPRIGHT" relativeTo="$(parent)H1" relativePoint="BOTTOMRIGHT" offsetX="10" offsetY="5"/>
 					<DimensionConstraints minX="4" minY="8"/>
 					<TextureCoords left="0.18164062" right="0.818359375" top="0" bottom="1"/>
 				</Texture>
-		    </Controls>
+			</Controls>
 		</TopLevelControl>
 
 		<Control name="RT_Craft_Template" virtual="true">

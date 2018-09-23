@@ -6,7 +6,9 @@
 
 RefinementTracker = {}
 RefinementTracker.name = "RefinementTracker"
-RefinementTracker.version = "0.9.1"
+RefinementTracker.version = "0.9.3"
+
+local libDialog = LibStub("LibDialog")
 
 -- Defaults
 local defaultOptions = {
@@ -56,6 +58,8 @@ function RefinementTracker:Initialize()
     SCENE_MANAGER:RegisterTopLevel(RefinementTrackerWindow, false)
 
     ZO_CreateStringId("SI_BINDING_NAME_REFINED_TOGGLE", "Toggle Refinement Tracker Results")
+
+    libDialog:RegisterDialog("RefinementTracker", "ResetConfirmation", "Refinement Tracker", "Reset all data to 0?\nMake a backup of\n|c99FF99SavedVariables/RefinementTracker.lua|r if you're not sure!", resetData, nil, nil)
 
     if (RefinementTracker.SavedOptions.Debug) then
         d("RefinementTracker initialized!")
@@ -205,6 +209,28 @@ function RefinementTracker.OnExitCrafting(eventCode, craftSkill)
     RefinementTracker.refining = nil
 
     mergeToStorage()
+end
+
+
+---------------------------------------------------------------------
+-- Reset functionality
+function resetData()
+    -- It would be better to just set the table to default...
+    -- but I need it to be zeroes to reset the GUI immediately, because lazy
+    for craftId, craftType in pairs(RefinementTracker.SavedValues.Table) do
+        for rawId, boosters in pairs(craftType) do
+            for boosterId, numObtained in pairs(boosters) do
+                RefinementTracker.SavedValues.Table[craftId][rawId][boosterId] = 0
+            end
+        end
+    end
+
+    RefinementTracker.populateGui()
+    d("Refinement Tracker values reset!")
+end
+
+function RefinementTracker.askReset()
+    libDialog:ShowDialog("RefinementTracker", "ResetConfirmation", nil)
 end
 
 
