@@ -6,9 +6,9 @@
 
 RefinementTracker = {}
 RefinementTracker.name = "RefinementTracker"
-RefinementTracker.version = "0.9.3"
+RefinementTracker.version = "0.9.4"
 
-local libDialog = LibStub("LibDialog")
+local libDialog 
 
 -- Defaults
 local defaultOptions = {
@@ -40,6 +40,7 @@ RefinementTracker.isVisible = false
 -- Initialize 
 function RefinementTracker:Initialize()
     d("Initializing RefinementTracker...")
+    libDialog = LibStub:GetLibrary("LibDialog")
 
     -- Register
     EVENT_MANAGER:RegisterForEvent(self.name, EVENT_INVENTORY_SINGLE_SLOT_UPDATE, self.OnInventoryChange)

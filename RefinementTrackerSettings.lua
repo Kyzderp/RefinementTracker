@@ -5,7 +5,7 @@
 -----------------------------------------------------------
 
 function RefinementTracker:CreateSettingsMenu()
-    local LAM = LibStub("LibAddonMenu-2.0")
+    local LAM = LibStub:GetLibrary("LibAddonMenu-2.0")
     --Register the Options panel with LAM
     local panelData = 
     {
