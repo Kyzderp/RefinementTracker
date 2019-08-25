@@ -235,9 +235,8 @@ local qualityConversion =
     [ITEM_QUALITY_LEGENDARY] = "Legendary"
 }
 
--- Updates GUI according to passed in rawId and quality. Works because
--- only 1 is refined at a time
-function RefinementTracker.mergeToGui(rawId, craftSkill, quality)
+-- Updates GUI according to passed in rawId and quality.
+function RefinementTracker.mergeToGui(rawId, craftSkill, quality, quantity)
     -- This is needed because both light and medium are in Clothing
     local currentCraftSkill = craftSkill
     if (craftSkill == CRAFTING_TYPE_CLOTHIER) then
@@ -262,11 +261,11 @@ function RefinementTracker.mergeToGui(rawId, craftSkill, quality)
     if (quality == -1) then
         -- -1 means just update value for raw material
         local rawText = row:GetNamedChild("Raw")
-        rawText:SetText(tostring(tonumber(rawText:GetText()) + 10))
+        rawText:SetText(tostring(tonumber(rawText:GetText()) + quantity))
     else
         -- Update value for whatever quality it was
         local qualityText = row:GetNamedChild(qualityConversion[quality])
-        qualityText:SetText(tostring(tonumber(qualityText:GetText()) + 1))
+        qualityText:SetText(tostring(tonumber(qualityText:GetText()) + quantity))
     end
 end
 

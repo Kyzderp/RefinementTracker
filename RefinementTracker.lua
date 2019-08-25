@@ -6,7 +6,7 @@
 
 RefinementTracker = {}
 RefinementTracker.name = "RefinementTracker"
-RefinementTracker.version = "0.9.4"
+RefinementTracker.version = "0.9.5"
 
 local libDialog 
 
@@ -109,7 +109,7 @@ function RefinementTracker.OnInventoryChange(eventCode, bagId, slotIndex, isNewI
             -- Update GUI immediately
             local _, _, _, rawId = ZO_LinkHandler_ParseLink(RefinementTracker.refining)
             RefinementTracker.mergeToGui(tonumber(rawId),
-                RefinementTracker.craftSkill, -1)
+                RefinementTracker.craftSkill, -1, -stackCountChange)
             return
         end
 
@@ -135,7 +135,7 @@ function RefinementTracker.OnInventoryChange(eventCode, bagId, slotIndex, isNewI
                 -- Update GUI immediately
                 local _, _, _, rawId = ZO_LinkHandler_ParseLink(RefinementTracker.refining)
                 RefinementTracker.mergeToGui(tonumber(rawId), RefinementTracker.craftSkill,
-                    GetItemLinkQuality(link))
+                    GetItemLinkQuality(link), stackCountChange)
                 return
             end
         end
