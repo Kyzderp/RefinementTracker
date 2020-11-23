@@ -6,7 +6,6 @@
 
 RefinementTracker = {}
 RefinementTracker.name = "RefinementTracker"
-RefinementTracker.version = "0.9.5"
 
 local libDialog 
 
@@ -40,7 +39,7 @@ RefinementTracker.isVisible = false
 -- Initialize 
 function RefinementTracker:Initialize()
     d("Initializing RefinementTracker...")
-    libDialog = LibStub:GetLibrary("LibDialog")
+    libDialog = LibDialog
 
     -- Register
     EVENT_MANAGER:RegisterForEvent(self.name, EVENT_INVENTORY_SINGLE_SLOT_UPDATE, self.OnInventoryChange)
@@ -71,6 +70,7 @@ end
 -- On Load
 function RefinementTracker.OnAddOnLoaded(event, addonName)
     if addonName == RefinementTracker.name then
+        EVENT_MANAGER:UnregisterForEvent(RefinementTracker.name, EVENT_ADD_ON_LOADED)
         RefinementTracker:Initialize()
     end
 end
